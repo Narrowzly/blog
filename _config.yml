@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 重剑无锋，大巧不工
+title: 周卡卡的博客
 subtitle:
-description:
+description: 重剑无锋，大巧不工
 author: Narrowkaka
-language: zh-CN
+language: zh-Hans
 timezone: 
 
 # URL
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: coney
+theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:

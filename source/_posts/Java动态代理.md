@@ -9,7 +9,7 @@ tags: [设计模式, Java]
 ### 正文
 > 假设我们有一个业务逻辑那就是在某个类的每个方法运行的时候前后添加开始和结束的日志。我们会怎么办？首先我们看下代码示例首先我们定义一个Person类的接口
 > ```  
->	public interface Person {
+	public interface Person {
         public void eat();
         public void drink();
         public void sleep();
@@ -18,7 +18,7 @@ tags: [设计模式, Java]
 ```
 > 然后是一个学生类的具体实现
 > ``` 
->  public class Student implements Person {
+ public class Student implements Person {
 	@Override
 	public void eat() {
 		System.out.println("I am eating!");
@@ -61,9 +61,8 @@ public class StaticProxy implements Person {
 	}
 }
 ```
->很简单实现Person接口然后再持有Student的引用，再添加。有效解决了方法一的第二种情况，可是添加500个方法我表示依然蛋疼。这时候就要出现我们的动态代理了
-3. 动态代理的解决方案
-``` 
+>3.很简单实现Person接口然后再持有Student的引用，再添加。有效解决了方法一的第二种情况，可是添加500个方法我表示依然蛋疼。这时候就要出现我们的动态代理了动态代理的解决方案
+> ``` 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -71,7 +70,9 @@ public class DynamicProxy implements InvocationHandler {
 	Object target;
 	public Object bind(Object target) {
 		this.target = target;
-		return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
+		return Proxy.newProxyInstance
+        (target.getClass().getClassLoader(), 
+        target.getClass().getInterfaces(), this);
 	}
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -82,7 +83,7 @@ public class DynamicProxy implements InvocationHandler {
 	}
 }
 ```
-```
+> ```
 public class Test {
 	public static void main(String[] args) {
 		DynamicProxy proxy = new DynamicProxy();
